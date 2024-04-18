@@ -31,10 +31,6 @@ export const VideoPlayer = ({
 }: VideoPlayerProps) => {
     const [isReady, setIsReady] = useState(false)
 
-    const handleCanPlay = () => {
-        setIsReady(true);
-    };
-
     return (
         <div className="relative aspect-video">
             {!isReady && !isLocked && (
@@ -56,7 +52,7 @@ export const VideoPlayer = ({
                 className={cn(
                     !isReady && "hidden"
                 )}
-                onCanPlay={handleCanPlay} // This sets isReady state to true when video can start playing
+                onCanPlay={() => setIsReady(true)} // This sets isReady state to true when video can start playing
                 autoPlay
                 playbackId={playbackId}
             />
