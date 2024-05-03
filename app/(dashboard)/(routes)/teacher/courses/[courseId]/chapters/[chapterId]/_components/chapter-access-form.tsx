@@ -48,7 +48,7 @@ export const ChapterAccessForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      isFree: !!initialData.isFree,  /*or Boolean(initialData.isFree)*/
+      isFree: !!initialData.isFree /*or Boolean(initialData.isFree)*/,
     },
   });
 
@@ -71,7 +71,8 @@ export const ChapterAccessForm = ({
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        Chapter access        <Button onClick={toggleEdit} variant="ghost">
+        Chapter access{" "}
+        <Button onClick={toggleEdit} variant="ghost">
           {isEditing && <>Cancel</>}
           {!isEditing && (
             <>
@@ -89,13 +90,9 @@ export const ChapterAccessForm = ({
           )}
         >
           {initialData.isFree ? (
-            <>
-              This chapter is free for preview.
-            </>
+            <>This chapter is free for preview.</>
           ) : (
-            <>
-              This chapter is not free
-            </>
+            <>This chapter is not free</>
           )}
         </p>
       )}
@@ -111,11 +108,15 @@ export const ChapterAccessForm = ({
               render={({ field }) => (
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
-                    <Checkbox checked={field.value} onCheckedChange={field.onChange}/>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormDescription>
-                      Check this box if you want to make this chapter free for preview
+                      Check this box if you want to make this chapter free for
+                      preview
                     </FormDescription>
                   </div>
                 </FormItem>
